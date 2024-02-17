@@ -5,6 +5,6 @@ import org.isscorp.yeahttp.annotations.Get;
 public interface GetCalls {
 
   @Get
-  void myFirstGet();
+  String myFirstGet();
 
 }
