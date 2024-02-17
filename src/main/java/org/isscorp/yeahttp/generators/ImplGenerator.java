@@ -1,6 +1,5 @@
 package org.isscorp.yeahttp.generators;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Proxy;
 
 /**
@@ -18,10 +17,9 @@ public class ImplGenerator<T> {
     }
   }
 
-  public T generateImplementation() throws NoSuchMethodException, InvocationTargetException, InstantiationException,
-      IllegalAccessException {
+  public T generateImplementation() {
 
-    return (T) Proxy.newProxyInstance(this.getClass().getClassLoader(), new Class[] {this.annotatedInterface},
+    return (T) Proxy.newProxyInstance(this.getClass().getClassLoader(), new Class[]{this.annotatedInterface},
         new DefaultInvocationHandler());
   }
 
