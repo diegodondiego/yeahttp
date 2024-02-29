@@ -1,11 +1,12 @@
 package org.isscorp.yeahttp.test.generators;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Arrays;
 import org.isscorp.yeahttp.generators.ImplGenerator;
-import org.isscorp.yeahttp.test.classes.GetCalls;
+import org.isscorp.yeahttp.test.classes.GetDogsInfo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,13 +15,13 @@ import org.junit.jupiter.api.Test;
  */
 class ImplGeneratorTests {
 
-  private ImplGenerator<GetCalls> getCallsImplGenerator;
+  private ImplGenerator<GetDogsInfo> getCallsImplGenerator;
 
   // dummies
 
   @BeforeEach
   void setUp() {
-    this.getCallsImplGenerator = new ImplGenerator<>(GetCalls.class);
+    this.getCallsImplGenerator = new ImplGenerator<>(GetDogsInfo.class);
   }
 
   @Test
@@ -40,6 +41,6 @@ class ImplGeneratorTests {
 
   @Test
   void testWithFixedValue() {
-    assertEquals("test", this.getCallsImplGenerator.generateImplementation().myFirstGet());
+    assertTrue(Arrays.asList(this.getCallsImplGenerator.generateImplementation().getAllHoundsBreeds().message()).contains("afghan"));
   }
 }

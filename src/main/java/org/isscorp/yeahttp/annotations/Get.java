@@ -14,6 +14,13 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface Get {
 
+  /**
+   * the endpoint to be called
+   *
+   * @return
+   */
+  String endpoint();
+
   // TODO maybe a specific timeout?
 
 }
