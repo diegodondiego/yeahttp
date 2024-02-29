@@ -15,7 +15,7 @@ public class ImplGenerator<T> {
   /**
    * @param annotatedInterface the type to be enriched with the capabilities of the framework
    */
-  public ImplGenerator(Class<T> annotatedInterface) {
+  public ImplGenerator(final Class<T> annotatedInterface) {
     this.annotatedInterface = annotatedInterface;
     if (null == annotatedInterface || !annotatedInterface.isInterface()) {
       throw new IllegalArgumentException("object " + annotatedInterface + "is not an interface");
@@ -27,7 +27,7 @@ public class ImplGenerator<T> {
    */
   public T generateImplementation() {
 
-    return (T) Proxy.newProxyInstance(getClass().getClassLoader(), new Class[]{annotatedInterface},
+    return (T) Proxy.newProxyInstance(this.getClass().getClassLoader(), new Class[]{this.annotatedInterface},
         new DefaultInvocationHandler());
   }
 

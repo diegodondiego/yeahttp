@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.lang.reflect.InvocationTargetException;
 import org.isscorp.yeahttp.generators.ImplGenerator;
 import org.isscorp.yeahttp.test.classes.GetCalls;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -14,7 +14,14 @@ import org.junit.jupiter.api.Test;
  */
 class ImplGeneratorTests {
 
+  private ImplGenerator<GetCalls> getCallsImplGenerator;
+
   // dummies
+
+  @BeforeEach
+  void setUp() {
+    this.getCallsImplGenerator = new ImplGenerator<>(GetCalls.class);
+  }
 
   @Test
   void argumentIsNull() {
@@ -27,12 +34,12 @@ class ImplGeneratorTests {
   }
 
   @Test
-  void checkImplementedClassType() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-    assertNotNull(new ImplGenerator<>(GetCalls.class).generateImplementation());
+  void testCheckImplementedClassType() {
+    assertNotNull(this.getCallsImplGenerator.generateImplementation());
   }
 
   @Test
-  void testWithFixedValue() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-    assertEquals("test", new ImplGenerator<>(GetCalls.class).generateImplementation().myFirstGet());
+  void testWithFixedValue() {
+    assertEquals("test", this.getCallsImplGenerator.generateImplementation().myFirstGet());
   }
 }
