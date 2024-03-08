@@ -7,3 +7,4 @@ okhttp and retrofit.
 
 1. create a interface, configure with annotations their methods to represents the HTTP calls (like retrofit)
 2. build all the calls with the less amount of third-party code
+3. implements a configuration based on yaml and using an annotation that automatically loads basic information for the http call
