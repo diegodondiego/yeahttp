@@ -28,7 +28,7 @@ public class ImplGenerator<T> {
   public T generateImplementation() {
 
     return (T) Proxy.newProxyInstance(this.getClass().getClassLoader(), new Class[]{this.annotatedInterface},
-        new DefaultInvocationHandler());
+        new HTTPMethodsDefaultHandler());
   }
 
 }

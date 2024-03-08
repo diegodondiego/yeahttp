@@ -8,9 +8,9 @@ import java.net.URLConnection;
 import org.isscorp.yeahttp.annotations.Get;
 
 /**
- *
+ * This class resolves all the http methods implemented
  */
-public class DefaultInvocationHandler implements InvocationHandler {
+public class HTTPMethodsDefaultHandler implements InvocationHandler {
 
   @Override
   public Object invoke(final Object proxy, final Method method, final Object[] args) throws Throwable {
